@@ -4,6 +4,9 @@ import { db } from "@/db";
 import { branches } from "@/db/schema";
 import { getBranch } from "@/lib/queries";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: Promise<{ id: string }> };
 
 // Toggles a branch between ready (active) and paused (scaled to zero).

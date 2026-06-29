@@ -9,6 +9,8 @@ import { enqueue, processDue } from "@/lib/jobs/runner";
 import { logEvent } from "@/lib/events";
 import { getDemoProject } from "@/lib/queries";
 
+export const dynamic = "force-dynamic";
+
 export const runtime = "nodejs";
 
 type GithubPr = {

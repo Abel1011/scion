@@ -3,6 +3,9 @@ import { getBranch } from "@/lib/queries";
 import { toBranchView } from "@/lib/views";
 import { enqueue, processDue } from "@/lib/jobs/runner";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: Promise<{ id: string }> };
 
 export async function GET(_req: Request, { params }: Ctx) {

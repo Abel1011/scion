@@ -8,6 +8,8 @@ import { getConfig } from "@/lib/config";
 import { fetchBranchData } from "@/lib/data-preview";
 import { toBranchView, toDeployRequestView, toEventView } from "@/lib/views";
 
+export const dynamic = "force-dynamic";
+
 export const runtime = "nodejs";
 
 type Ctx = { params: Promise<{ id: string }> };

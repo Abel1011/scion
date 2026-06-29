@@ -4,6 +4,9 @@ import { maskingRules } from "@/db/schema";
 import { getDemoProject, getOrCreatePolicyId, listMaskingRules } from "@/lib/queries";
 import { logEvent } from "@/lib/events";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const FUNCTIONS = ["mask_email", "mask_name", "mask_card", "mask_phone", "nullify"];
 
 export async function GET() {

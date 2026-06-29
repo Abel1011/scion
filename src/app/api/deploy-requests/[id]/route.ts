@@ -9,6 +9,9 @@ import { runDdlOnGolden } from "@/lib/schema-diff/introspect";
 import { recomputeDeployRequest } from "@/lib/schema-diff/recompute";
 import { toDeployRequestView } from "@/lib/views";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: Promise<{ id: string }> };
 
 export async function GET(_req: Request, { params }: Ctx) {

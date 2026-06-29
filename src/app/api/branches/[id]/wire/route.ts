@@ -4,6 +4,8 @@ import { getConfig, branchDatabaseUrl } from "@/lib/config";
 import { listPreviews, wirePreview } from "@/lib/integrations/vercel";
 import { logEvent } from "@/lib/events";
 
+export const dynamic = "force-dynamic";
+
 export const runtime = "nodejs";
 
 type Ctx = { params: Promise<{ id: string }> };

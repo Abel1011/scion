@@ -6,6 +6,8 @@ import {
   sweepExpiredLeases,
 } from "@/lib/jobs/runner";
 
+export const dynamic = "force-dynamic";
+
 export const runtime = "nodejs";
 
 // Worker + sweeper. Drives the provisioning state machine, reaps expired leases,

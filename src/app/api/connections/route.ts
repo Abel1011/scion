@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import type { ConnectionConfig } from "@/db/schema";
 import { getConfig, saveConnection } from "@/lib/config";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const c = await getConfig();
   return NextResponse.json({

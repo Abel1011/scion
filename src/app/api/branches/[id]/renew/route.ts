@@ -5,6 +5,9 @@ import { branches } from "@/db/schema";
 import { env } from "@/lib/env";
 import { getBranch } from "@/lib/queries";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: Promise<{ id: string }> };
 
 export async function POST(_req: Request, { params }: Ctx) {

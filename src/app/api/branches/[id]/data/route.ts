@@ -3,6 +3,8 @@ import { getBranch } from "@/lib/queries";
 import { getConfig } from "@/lib/config";
 import { fetchBranchData } from "@/lib/data-preview";
 
+export const dynamic = "force-dynamic";
+
 export const runtime = "nodejs";
 
 type Ctx = { params: Promise<{ id: string }> };

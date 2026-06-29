@@ -8,6 +8,9 @@ import { logEvent } from "@/lib/events";
 import { getDemoProject, listBranches } from "@/lib/queries";
 import { toBranchView } from "@/lib/views";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const MODES = ["masked", "schema_only"] as const;
 type Mode = (typeof MODES)[number];
 

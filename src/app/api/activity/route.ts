@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { getDemoProject, listActivity } from "@/lib/queries";
 import { toActivityItemView } from "@/lib/views";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const project = await getDemoProject();
   if (!project) return NextResponse.json({ events: [] });

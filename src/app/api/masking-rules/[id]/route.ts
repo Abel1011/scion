@@ -4,6 +4,9 @@ import { db } from "@/db";
 import { maskingRules } from "@/db/schema";
 import { logEvent } from "@/lib/events";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: Promise<{ id: string }> };
 
 export async function DELETE(_req: Request, { params }: Ctx) {

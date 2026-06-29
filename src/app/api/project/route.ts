@@ -5,6 +5,9 @@ import { projects } from "@/db/schema";
 import { getDemoProject, listGoldens } from "@/lib/queries";
 import { toGoldenView } from "@/lib/views";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const project = await getDemoProject();
   if (!project) {

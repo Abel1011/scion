@@ -3,6 +3,9 @@ import { getConfig } from "@/lib/config";
 import { getDemoProject, listDeployRequests } from "@/lib/queries";
 import { toDeployRequestView } from "@/lib/views";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const project = await getDemoProject();
   if (!project) return NextResponse.json({ deployRequests: [] });

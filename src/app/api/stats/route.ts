@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { getDemoProject, getStats } from "@/lib/queries";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const project = await getDemoProject();
   if (!project) {

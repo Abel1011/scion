@@ -2,6 +2,9 @@ import { NextResponse, after } from "next/server";
 import { getBranch } from "@/lib/queries";
 import { processDue, runReset } from "@/lib/jobs/runner";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type Ctx = { params: Promise<{ id: string }> };
 
 export async function POST(_req: Request, { params }: Ctx) {
