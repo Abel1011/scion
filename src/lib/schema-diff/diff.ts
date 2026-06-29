@@ -29,9 +29,20 @@ export function computeSchemaDiff(migrationSql?: string | null): SchemaDiff {
     .join("\n");
 
   const hasDestructive = /\bdrop\s+(column|table)\b/i.test(sql);
-  const lint: LintFinding[] = hasDestructive
-    ? [{ rule: "data_loss", level: "danger", message: "Drops a column/table (data loss)" }]
-    : [{ rule: "additive", level: "warn", message: "Additive change — safe" }];
+  let lint: LintFinding[];
+  if (hasDestructive) {
+    // Identify what the change destroys. The real count of rows at risk comes
+    // from production introspection in aws mode; this fallback only names the
+    // target, it never fabricates a number.
+    const col = sql.match(/alter\s+table\s+(\w+)\s+drop\s+column\s+(\w+)/i);
+    const tbl = sql.match(/drop\s+table\s+(\w+)/i);
+    const target = col ? `${col[1]}.${col[2]}` : tbl ? tbl[1] : "data";
+    lint = [
+      { rule: "data_loss", level: "danger", message: `Deletes ${target} (data loss)` },
+    ];
+  } else {
+    lint = [{ rule: "additive", level: "warn", message: "Additive change, safe to apply" }];
+  }
 
   return { diffSql, hasDestructive, lint };
 }
