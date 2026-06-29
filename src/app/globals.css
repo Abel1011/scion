@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #e9e9e4;
+  --color-surface: #fbfbf9;
+  --color-raised: #f1f1ec;
+  --color-line: #deddd4;
+
+  --color-ink: #191a17;
+  --color-ink-muted: #5c5e55;
+  --color-ink-faint: #9a9b8f;
+
+  --color-leaf: #2c7a37;
+  --color-leaf-deep: #245f2c;
+  --color-ok: #2c7a3f;
+  --color-alert: #d83a3a;
+  --color-amber: #9a6300;
+
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-scion), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink-muted);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-leaf);
+    color: #fff;
+  }
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 5px;
+  }
+}
+
+@utility card {
+  box-shadow:
+    0 1px 2px rgb(25 26 23 / 0.04),
+    inset 0 1px 0 rgb(255 255 255 / 0.6);
+}
+
+/* Shimmering placeholder used while data loads, to avoid layout jumps. */
+@utility skeleton {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-raised) 28%,
+    #e4e4dc 48%,
+    var(--color-raised) 68%
+  );
+  background-size: 220% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+/* Soft entrance for content that swaps in after a skeleton. */
+@utility fade-in {
+  animation: fade-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Side panel / drawer entrance. */
+@utility slide-in-right {
+  animation: slide-in-right 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+  .fade-in,
+  .slide-in-right {
+    animation: none;
+  }
+}
+
+@layer base {
+  /* Native form controls get a consistent, modern look across the app. */
+  select,
+  input,
+  textarea {
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.15s ease;
+  }
+  select {
+    background-image: none;
+  }
+}
